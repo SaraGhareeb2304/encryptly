@@ -88,7 +88,7 @@ public class ChatClient {
             }
 
 
-            /* 5.automatic cleanup on disconnect
+            /* 4.automatic cleanup on disconnect
             this entire method uses a try-with-resources block, so when we break
             out of the loop above, java automatically closes:
             -> the socket connection / the input stream (serverIn)
