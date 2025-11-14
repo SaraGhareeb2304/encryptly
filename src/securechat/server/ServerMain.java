@@ -65,13 +65,13 @@ static class ClientHandler implements Runnable {
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            out.println("Enter_USERNAME");
+            out.println("Enter username, ");
             String nameLine = in.readLine();
             if (nameLine != null && !nameLine.isEmpty()) {
                 username = nameLine.trim();
             }
-            server.broadcast(username + "has joined the chat.", this);
-            System.out.println(username + "joined from" + socket.getRemoteSocketAddress());
+            server.broadcast(username + " has joined the chat.", this);
+            System.out.println(username + " joined from" + socket.getRemoteSocketAddress());
 
             String line;
             while ((line = in.readLine()) != null){
@@ -88,7 +88,7 @@ static class ClientHandler implements Runnable {
         } finally {
             try {
                 server.removeClient(this);
-                server.broadcast(username + "has left the chat.", this);
+                server.broadcast(username + " has left the chat.", this);
                 if (socket != null && !socket.isClosed()) socket.close();
             } catch (IOException ignored) {
 

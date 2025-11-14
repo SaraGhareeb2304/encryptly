@@ -31,11 +31,11 @@ public class ChatClient {
              */
 
             String firstLine = serverIn.readLine();
-            if ("Enter_Username".equals(firstLine)) {
+            if ("Enter_Username ".equals(firstLine)) {
                 System.out.print("Enter your username: ");
                 String username = consoleIn.readLine();
                 if (username == null || username.trim().isEmpty()) {
-                    username = "Anonymous";
+                    username = "Anonymous ";
                 }
                 serverOut.println(username);
             } else if (firstLine != null) {
@@ -43,7 +43,7 @@ public class ChatClient {
                 System.out.print(firstLine);
             }
 
-            /* 2. Start a threat to listen for messages from the server
+            /* 2. Start a thread to listen for messages from the server
              this thread runs in the background and constantly listens for messages
              coming from the server. when the server broadcasts a message,
              this thread immediately prints it on our screen.
