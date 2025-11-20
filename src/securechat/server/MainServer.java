@@ -5,14 +5,14 @@ import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class ServerMain {
+public class MainServer {
 
     private static final int PORT = 43221;
 
     private final Set<ClientHandler> clients = ConcurrentHashMap.newKeySet();
 
     public static void main(String[] args){
-        new ServerMain().start();
+        new MainServer().start();
     }
     public void start(){
         System.out.println("Starting chat server on port " + PORT);
@@ -48,12 +48,12 @@ public void removeClient(ClientHandler ch) {
 
 static class ClientHandler implements Runnable {
     private final Socket socket;
-    private final ServerMain server;
+    private final MainServer server;
     private PrintWriter out;
     private BufferedReader in;
     private String username = "Anonymous";
 
-    ClientHandler(Socket socket, ServerMain server) {
+    ClientHandler(Socket socket, MainServer server) {
         this.socket = socket;
         this.server = server;
     }
