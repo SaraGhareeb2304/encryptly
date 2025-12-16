@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28ed02f1-0cdf-4768-b3f9-5a90239f209c" name="Changes" comment="applied changes to .gitignore" />
+    <list default="true" id="28ed02f1-0cdf-4768-b3f9-5a90239f209c" name="Changes" comment="applied changes to .gitignore">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/securechat/client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/securechat/client/ChatClient.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +108,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1765877900306</updated>
-      <workItem from="1765877901746" duration="2510000" />
+      <workItem from="1765877901746" duration="5648000" />
     </task>
     <task id="LOCAL-00001" summary="applied changes to .gitignore">
       <option name="closed" value="true" />
@@ -134,5 +138,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="applied changes to .gitignore" />
     <option name="LAST_COMMIT_MESSAGE" value="applied changes to .gitignore" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/encryptly$ChatClient.ic" NAME="ChatClient Coverage Results" MODIFIED="1765883774029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>securechat.client.*</FILTER>
+    </SUITE>
   </component>
 </project>

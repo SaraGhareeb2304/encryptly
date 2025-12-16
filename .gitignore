@@ -26,9 +26,20 @@ bin/
 ### VS Code ###
 .vscode/
 
-### Mac OS ###
+### macOS ###
 .DS_Store
 
+### Java build tools ###
+target/
+build/
+.gradle/
+
+### Logs ###
+*.log
+logs/
+
+### Security material (VERY IMPORTANT) ###
 *.keystore
 *.jks
 *.p12
+*.truststore
