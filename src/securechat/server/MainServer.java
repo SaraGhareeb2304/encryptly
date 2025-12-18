@@ -8,6 +8,7 @@ import javax.net.ssl.*;
 
 public class MainServer {
 
+    private final Set<String> activeUsernames = ConcurrentHashMap.newKeySet();
     public static final String KEYSTORE_LOCATION = "src/securechat/server/chatserver.keystore";
     public static final String KEYSTORE_PASSWORD = "password";
     public static final boolean DEBUG = false;
@@ -40,7 +41,6 @@ public class MainServer {
                 SSLSocket clientSocket = (SSLSocket) serverSocket.accept();
 
                 ClientHandler handler = new ClientHandler(clientSocket, this);
-                clients.add(handler);
 
                 Thread t = new Thread(handler);
                 t.start();
@@ -65,6 +65,9 @@ public class MainServer {
     public void removeClient(ClientHandler ch) {
 
         clients.remove(ch);
+        if (ch.username != null) {
+            activeUsernames.remove(ch.username.toLowerCase());
+        }
     }
 
     static class ClientHandler implements Runnable {
@@ -86,12 +89,27 @@ public class MainServer {
                 out = new PrintWriter(socket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                out.println("Enter username: ");
+                out.println("Enter username:");
                 String nameLine = in.readLine();
 
-                if (nameLine != null && !nameLine.isEmpty()) {
-                    username = nameLine.trim();
+                if (nameLine == null || nameLine.trim().isEmpty()) {
+                    out.println("ERROR: Invalid username");
+                    socket.close();
+                    return;
                 }
+                String requestedUsername = nameLine.trim();
+                String usernameKey = requestedUsername.toLowerCase();
+
+                if (!server.activeUsernames.add(usernameKey)) {
+                    out.println("ERROR: Username already in use");
+                    socket.close();
+                    return;
+                }
+
+                username = requestedUsername;
+                server.clients.add(this);
+
+
                 server.broadcast(username + " has joined the chat.", this);
                 System.out.println(username + " joined from" + socket.getRemoteSocketAddress());
 
