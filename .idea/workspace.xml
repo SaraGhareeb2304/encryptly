@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28ed02f1-0cdf-4768-b3f9-5a90239f209c" name="Changes" comment="applied changes to .gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/securechat/server/MainServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/securechat/server/MainServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/securechat/client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/securechat/client/ChatClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,12 +21,12 @@
     &quot;assignee&quot;: &quot;JudyAlazemi&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/SaraGhareeb2304/encryptly.git",
-    "accountId": "57535efe-5573-45ad-817f-30a85dcc81fc"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SaraGhareeb2304/encryptly.git&quot;,
+    &quot;accountId&quot;: &quot;57535efe-5573-45ad-817f-30a85dcc81fc&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
