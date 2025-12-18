@@ -1,7 +1,6 @@
 package securechat.client;
 
 import java.io.*;
-import java.net.Socket;
 import javax.net.ssl.*;
 
 public class ChatClient {
@@ -13,6 +12,11 @@ public class ChatClient {
     private static final String TRUSTSTORE_LOCATION = "src/securechat/client/chatclient.truststore";
     private static final String TRUSTSTORE_PASSWORD = "password";
 
+    private static final boolean ENABLE_AUTH = true;
+
+    private static final String AUTH_PROMPT = "Enter password:";
+    private static final String AUTH_OK = "AUTH_OK";
+    private static final String AUTH_FAIL = "AUTH_FAIL";
 
 
     public static void main(String[] args) {
@@ -52,9 +56,39 @@ public class ChatClient {
                         username = "Anonymous";
                     }
                     serverOut.println(username);
-                } else if (firstLine != null) {
-                    System.out.println(firstLine);
+
+                    if (ENABLE_AUTH) {
+
+                        String authLine = serverIn.readLine();
+
+                        if (authLine != null && authLine.trim().toLowerCase().startsWith("enter password")) {
+                            System.out.print("Enter password: ");
+                            String password = consoleIn.readLine();
+                            if (password == null) password = "";
+                            serverOut.println(password);
+
+                            authLine = serverIn.readLine();
+                        }
+
+                        if (authLine == null || authLine.trim().equalsIgnoreCase(AUTH_FAIL)) {
+                            System.out.println("Authentication failed. Disconnecting.");
+                            return; // exits start(), try-with-resources closes socket cleanly
+                        }
+
+                        if (!authLine.trim().equalsIgnoreCase(AUTH_OK)) {
+                            System.out.println("Unexpected auth response: " + authLine);
+                            System.out.println("Disconnecting for safety.");
+                            return;
+                        }
+
+                        System.out.println("Authenticated! You can now chat.");
+                    }
+
+                } else {
+                    System.out.println(firstLine == null ? "Server closed connection." : firstLine);
+                    return;
                 }
+
 
             /* 2. Start a thread to listen for messages from the server
              this thread runs in the background and constantly listens for messages
@@ -84,7 +118,7 @@ public class ChatClient {
             /* 3. main thread : read from console and send to server
              this part waits for the user to type something into the console.
              every line typed is sent to the server using serverOut.println().
-             if the user types "/quits", we break out of the loop and disconnect.
+             if the user types "/quit", we break out of the loop and disconnect.
 
              meanwhile. the reader thread is still printing incoming messages.
              this lets sending and receiving happen at the same time.
