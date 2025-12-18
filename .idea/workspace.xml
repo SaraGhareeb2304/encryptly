@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28ed02f1-0cdf-4768-b3f9-5a90239f209c" name="Changes" comment="applied changes to .gitignore">
-      <change beforePath="$PROJECT_DIR$/src/securechat/client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/securechat/client/ChatClient.java" afterDir="false" />
+    <list default="true" id="28ed02f1-0cdf-4768-b3f9-5a90239f209c" name="Changes" comment="changed ENABLE&#10;_AUTH to false">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765880833184</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="changed ENABLE&#10;_AUTH to false">
+      <option name="closed" value="true" />
+      <created>1766060052425</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1766060052425</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,7 +142,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="applied changes to .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="applied changes to .gitignore" />
+    <MESSAGE value="changed ENABLE&#10;_AUTH to false" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed ENABLE&#10;_AUTH to false" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/encryptly$ChatClient.ic" NAME="ChatClient Coverage Results" MODIFIED="1765883774029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
