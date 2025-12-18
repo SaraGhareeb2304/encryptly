@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
 import javax.net.ssl.*;
+import java.util.concurrent.ConcurrentMap;
 
 public class MainServer {
 
@@ -16,6 +17,18 @@ public class MainServer {
     private static final int PORT = 43221;
 
     private final Set<ClientHandler> clients = ConcurrentHashMap.newKeySet();
+
+    // Username -> password (demo )
+    private final ConcurrentMap<String, String> userPasswords = new ConcurrentHashMap<>();
+
+    private static final String AUTH_PROMPT = "Enter password:";
+    private static final String AUTH_OK = "AUTH_OK";
+    private static final String AUTH_FAIL = "AUTH_FAIL";
+
+    private static final String ADMIN_USERNAME = "Admin";
+    private static final String ADMIN_PASSWORD = "Admin123";
+
+
 
     public static void main(String[] args) {
         new MainServer().start();
@@ -107,21 +120,50 @@ public class MainServer {
                 }
 
                 username = requestedUsername;
+
+                out.println("Enter password:");
+                String passwordAttempt = in.readLine();
+
+                if (passwordAttempt == null) {
+                    out.println("AUTH_FAIL");
+                    socket.close();
+                    return;
+                }
+
+                if (username.equalsIgnoreCase(ADMIN_USERNAME)) {
+                    if (!ADMIN_PASSWORD.equals(passwordAttempt)) {
+                        out.println("AUTH_FAIL");
+                        socket.close();
+                        return;
+                    }
+                    out.println("AUTH_OK");
+                } else {
+                    String key = username.toLowerCase();
+                    String existing = server.userPasswords.putIfAbsent(key, passwordAttempt);
+
+                    if (existing != null && !existing.equals(passwordAttempt)) {
+                        out.println("AUTH_FAIL");
+                        socket.close();
+                        return;
+                    }
+                    out.println("AUTH_OK");
+                }
+
                 server.clients.add(this);
-
-
                 server.broadcast(username + " has joined the chat.", this);
-                System.out.println(username + " joined from" + socket.getRemoteSocketAddress());
+                System.out.println(username + " joined from " + socket.getRemoteSocketAddress());
 
+// Chat loop
                 String line;
                 while ((line = in.readLine()) != null) {
-                    if (line.equalsIgnoreCase("/quit")) {
-                        break;
-                    }
+                    if (line.equalsIgnoreCase("/quit")) break;
+
                     String message = username + ": " + line;
                     System.out.println("Received: " + message);
                     server.broadcast(message, this);
                 }
+
+
 
             } catch (IOException e) {
                 System.err.println("Connection error with " + username + ": " + e.getMessage());

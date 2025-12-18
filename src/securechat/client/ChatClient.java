@@ -8,11 +8,11 @@ public class ChatClient {
     private static final String HOST = "localhost";
     private static final int PORT = 43221;
 
-    // Truststore (client side)
+    // Truststore
     private static final String TRUSTSTORE_LOCATION = "src/securechat/client/chatclient.truststore";
     private static final String TRUSTSTORE_PASSWORD = "password";
 
-    private static final boolean ENABLE_AUTH = false;
+    private static final boolean ENABLE_AUTH = true;
 
     private static final String AUTH_PROMPT = "Enter password:";
     private static final String AUTH_OK = "AUTH_OK";
