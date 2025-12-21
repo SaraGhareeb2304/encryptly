@@ -5,7 +5,7 @@ import javax.net.ssl.*;
 
 public class ChatClient {
 
-    private static final String HOST = "localhost";
+    private static final String HOST = "172.20.10.1";
     private static final int PORT = 43221;
 
     // Truststore

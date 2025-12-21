@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="28ed02f1-0cdf-4768-b3f9-5a90239f209c" name="Changes" comment="made it so you have to enter password to text">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/securechat/client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/securechat/client/ChatClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +114,7 @@
       <workItem from="1766085741411" duration="4293000" />
       <workItem from="1766262712941" duration="1182000" />
       <workItem from="1766311242344" duration="702000" />
+      <workItem from="1766312841279" duration="601000" />
     </task>
     <task id="LOCAL-00001" summary="applied changes to .gitignore">
       <option name="closed" value="true" />
